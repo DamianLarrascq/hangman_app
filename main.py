@@ -17,16 +17,18 @@ def hangman():
     alphabet = set(string.ascii_uppercase)  #english alphabet
     used_letters = set()        #variable storing the letters already used by the player
     user_input = input('Type letter: ').upper()
+    word_list = [letter if letter in used_letters else '-' for letter in word_sel]      #show what current word is, show '-' for letters not guessed yet
 
-    if user_input in alphabet - used_letters:
-        used_letters.add(user_input)
-        if user_input in word_letters:
-            word_letters.remove(user_input)
+    while len(word_letters) > 0:
+        print('You have used these letters: ', ''.join(used_letters))
 
-    elif user_input in used_letters:
-        print('Letter already used')
-
-    else:
-        print('Invalid character')
+        if user_input in alphabet - used_letters:
+            used_letters.add(user_input)
+            if user_input in word_letters:
+                word_letters.remove(user_input)
+        elif user_input in used_letters:
+            print('Letter already used')
+        else:
+            print('Invalid character')
 
 
