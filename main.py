@@ -16,7 +16,7 @@ def hangman():
     word_letters = set(word_sel)        #divides word into separate letters
     alphabet = set(string.ascii_uppercase)  #english alphabet
     used_letters = set()        #variable storing the letters already used by the player
-    lives = 6
+    lives = 8
 
 
     while len(word_letters) > 0 and lives > 0:
@@ -40,8 +40,11 @@ def hangman():
         else:
             print('Invalid character')
 
+    if lives == 0:
+        print('You died. The word was ', word_sel)
+
     else:
-        print('The word was: ', word_sel)
+        print('You guessed the word ', word_sel)
 
 
 hangman()
